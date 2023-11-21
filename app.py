@@ -1,5 +1,4 @@
-from tkinter import E
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 import os
 import sentry_sdk
 
@@ -14,6 +13,10 @@ sentry_sdk.init(
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
 )
+
+@app.middleware("http")
+async def no_op_request_middleware(request: Request, call_next):
+    return await call_next(request)
 
 
 @app.get("/error/explicit")

@@ -8,9 +8,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.104.1"
+fastapi = "*"
 sentry-sdk = {extras = ["fastapi"], version = "^1.36.0"}
 uvicorn = "^0.24.0.post1"
+anyio = "4.0.0"
 
 
 [build-system]
